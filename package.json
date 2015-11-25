@@ -15,5 +15,9 @@
   "bugs": {
     "url": "https://github.com/JohnsonWebWare/PasswordArch/issues"
   },
-  "homepage": "https://github.com/JohnsonWebWare/PasswordArch#readme"
+  "homepage": "https://github.com/JohnsonWebWare/PasswordArch#readme",
+  "dependencies": {
+    "crypto": "0.0.3",
+    "ursa": "^0.9.1"
+  }
 }
