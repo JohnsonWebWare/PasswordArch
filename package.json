@@ -1,0 +1,19 @@
+{
+  "name": "password-arch",
+  "version": "1.0.0",
+  "description": "Secure Password Storage Arch",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JohnsonWebWare/PasswordArch.git"
+  },
+  "author": "ajohn2550",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JohnsonWebWare/PasswordArch/issues"
+  },
+  "homepage": "https://github.com/JohnsonWebWare/PasswordArch#readme"
+}
