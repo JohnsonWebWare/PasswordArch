@@ -4,7 +4,7 @@
   "description": "Secure Password Storage Arch",
   "main": "index.js",
   "scripts": {
-    "test": "istanbul cover _mocha"
+    "test": "istanbul cover _mocha -- test --recursive && xdg-open coverage/lcov-report/index.html"
   },
   "repository": {
     "type": "git",
