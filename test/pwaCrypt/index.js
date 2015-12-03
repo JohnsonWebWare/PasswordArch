@@ -40,8 +40,12 @@ describe('pwaCrypt', function () {
 	});
 
 	it('Should be able to fetch an encrypted password', function (done) {
-		var stored = pwaCrypt.fetch(testData.user, testData.site, testData.pin, testData.crtName);
-		expect(stored, 'fetched password').to.equal(testData.pass);
+		pwaCrypt.fetch(testData.user, testData.site, testData.pin, testData.crtName, function (err, password) {
+			expect(err, 'no errors').to.not.exist;
+			console.error(err);
+			expect(password, 'fetched password').to.equal(testData.pass);
+			console.info(password);
+		});
 
 		done();
 	});
