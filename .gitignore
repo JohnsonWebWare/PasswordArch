@@ -25,10 +25,3 @@ build/Release
 # Dependency directory
 # https://www.npmjs.org/doc/misc/npm-faq.html#should-i-check-my-node_modules-folder-into-git
 node_modules
-
-.secrets/.keys/*
-!.secrets/.keys/pwArch.pem
-.secrets/.pub/*
-!.secrets/.pub/pwArch.pub
-.secrets/.store/*
-!.secrets/.store/README.md
