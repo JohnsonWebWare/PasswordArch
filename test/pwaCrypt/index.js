@@ -1,29 +1,40 @@
 'use strict';
 
-var expect = require('chai').expect,
-		pwaCrypt = require('../../lib/pwaCrypt'),
-		crtName = 'pwArch';
+var fs = require('fs'),
+		os = require('os'),
+		ursa = require('ursa'),
+		expect = require('chai').expect,
+		pwaCrypt = require('../../lib/pwaCrypt');
 
 var testData = {
 	user: 'user',
 	site: 'site',
 	pin: 'pin',
-	crtName: 'pwArch',
+	crtName: 'pwArchTest',
 	pass: '122322'
-}
+};
 
-var encrypted = pwaCrypt.encrypt('122322', crtName);
-var decrypted = pwaCrypt.decrypt(encrypted, crtName);
+var keyFile = os.homedir() + '/.pwArch/.keys/' + testData.crtName + '.pem';
+var pubFile = os.homedir() + '/.pwArch/.pub/' + testData.crtName + '.pub';
+
+
+var pem = ursa.generatePrivateKey(4096, 65537);
+fs.writeFileSync(keyFile, pem.toPrivatePem('utf8'), { mode: '0600' });
+fs.writeFileSync(pubFile, pem.toPublicPem('utf8'), { mode: '0600' });
+
+
+var encrypted = pwaCrypt.encrypt(testData.pass, testData.crtName);
+var decrypted = pwaCrypt.decrypt(encrypted, testData.crtName);
 
 describe('pwaCrypt', function () {
 	it('Should be able to encrypt a string', function (done) {
-		expect(encrypted, 'encryption').to.not.equal('122322');
+		expect(encrypted, 'encryption').to.not.equal(testData.pass);
 		
 		done();
 	});
 
 	it('Should be able to decrypt a string', function (done) {
-		expect(decrypted, 'decryption').to.equal('122322');
+		expect(decrypted, 'decryption').to.equal(testData.pass);
 
 		done();
 	});
